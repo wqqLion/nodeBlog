@@ -1,0 +1,76 @@
+[2020-06-19 16:13:31] [33mhttp[39m: 192.168.5.15 GET /api/user/loginCheckss [33m404[0m 32.396 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 16:15:40] [31merror[39m: 测试
+[2020-06-19 16:18:48] [31merror[39m: db errorError: Connection lost: The server closed the connection.
+[2020-06-19 16:18:48] [31merror[39m: db error 执行重连Connection lost: The server closed the connection.
+[2020-06-19 16:19:10] [33mhttp[39m: 192.168.5.15 GET /api/user/loginCheckss [33m404[0m 6.025 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 16:19:31] [33mhttp[39m: 192.168.5.15 GET /api/user/loginCheck [32m200[0m 1.668 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 16:19:35] [33mhttp[39m: 192.168.5.15 GET /api/user/loginCheck [36m304[0m 5.306 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 16:20:49] [31merror[39m: db errorError: Connection lost: The server closed the connection.
+[2020-06-19 16:20:49] [31merror[39m: db error 执行重连Connection lost: The server closed the connection.
+[2020-06-19 16:22:49] [31merror[39m: db errorError: Connection lost: The server closed the connection.
+[2020-06-19 16:22:49] [31merror[39m: db error 执行重连Connection lost: The server closed the connection.
+[2020-06-19 16:23:52] [33mhttp[39m: 192.168.5.15 GET /api/user/loginCheck [36m304[0m 0.660 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 16:24:50] [31merror[39m: db errorError: Connection lost: The server closed the connection.
+[2020-06-19 16:24:50] [31merror[39m: db error 执行重连Connection lost: The server closed the connection.
+[2020-06-19 16:26:40] [31merror[39m: db errorError: read ECONNRESET
+[2020-06-19 16:28:01] [33mhttp[39m: 192.168.5.15 GET /api/user/loginCheck [32m200[0m 4.324 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 16:29:16] [33mhttp[39m: 192.168.5.15 GET /api/user/loginCheck [36m304[0m 11.232 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 16:29:32] [33mhttp[39m: 192.168.5.15 GET /api/user/loginCheck [36m304[0m 18.839 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 16:30:10] [33mhttp[39m: 192.168.5.15 POST /api/user/login [0mundefined[0m - ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 16:30:45] [33mhttp[39m: 192.168.5.15 POST /api/user/login [0mundefined[0m - ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 16:31:35] [33mhttp[39m: 192.168.5.15 POST /api/user/login [0mundefined[0m - ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 16:41:43] [33mhttp[39m: 192.168.5.15 GET /api/user/loginCheck [32m200[0m 21.023 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 16:41:47] [33mhttp[39m: 192.168.5.15 POST /api/user/login [31m500[0m 17.826 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 16:43:25] [33mhttp[39m: 192.168.5.15 POST /api/user/login [0mundefined[0m - ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 16:43:58] [33mhttp[39m: 192.168.5.15 POST /api/user/login [0mundefined[0m - ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 16:45:57] [33mhttp[39m: 192.168.5.15 POST /api/user/login [0mundefined[0m - ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 16:50:16] [33mhttp[39m: 192.168.5.15 GET /api/user/loginCheck [32m200[0m 5.825 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 16:50:26] [33mhttp[39m: 192.168.5.15 POST /api/user/login [0mundefined[0m - ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 16:51:36] [33mhttp[39m: 192.168.5.15 POST /api/user/login [31m500[0m 32.870 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 16:53:02] [33mhttp[39m: 192.168.5.15 POST /api/user/login [31m500[0m 60.165 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 16:54:05] [33mhttp[39m: 192.168.5.15 POST /api/user/login [31m500[0m 23.237 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 16:54:39] [33mhttp[39m: 192.168.5.15 POST /api/user/login [32m200[0m 10.904 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 16:55:15] [33mhttp[39m: 192.168.5.15 POST /api/user/login [31m500[0m 37.289 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 16:56:40] [33mhttp[39m: 192.168.5.15 POST /api/user/login [31m500[0m 52.404 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 16:57:21] [33mhttp[39m: 192.168.5.15 POST /api/user/login [31m500[0m 12.472 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 16:57:46] [33mhttp[39m: 192.168.5.15 POST /api/user/login [31m500[0m 53.549 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 16:58:14] [33mhttp[39m: 192.168.5.15 POST /api/user/login [32m200[0m 48.641 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 16:58:43] [33mhttp[39m: 192.168.5.15 POST /api/user/login [32m200[0m 46.713 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 16:59:57] [33mhttp[39m: 192.168.5.15 POST /api/user/login [32m200[0m 29.559 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 17:01:09] [33mhttp[39m: 192.168.5.15 POST /api/user/login [32m200[0m 57.093 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 17:02:33] [33mhttp[39m: 192.168.5.15 POST /api/user/login [31m500[0m 29.302 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 17:02:59] [33mhttp[39m: 192.168.5.15 POST /api/user/login [31m500[0m 58.797 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 17:03:44] [33mhttp[39m: 192.168.5.15 POST /api/user/login [32m200[0m 39.508 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 17:04:45] [33mhttp[39m: 192.168.5.15 POST /api/user/login [32m200[0m 27.383 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 17:05:25] [33mhttp[39m: 192.168.5.15 POST /api/user/login [32m200[0m 24.573 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 17:05:43] [33mhttp[39m: 192.168.5.15 POST /api/user/login [32m200[0m 48.235 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 17:06:46] [33mhttp[39m: 192.168.5.15 POST /api/user/login [32m200[0m 71.430 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 17:07:10] [33mhttp[39m: 192.168.5.15 POST /api/user/login [32m200[0m 19.336 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 17:09:56] [33mhttp[39m: 192.168.5.15 POST /api/user/login [32m200[0m 36.223 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 17:10:13] [33mhttp[39m: 192.168.5.15 POST /api/user/login [32m200[0m 14.107 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 17:11:17] [33mhttp[39m: 192.168.5.15 POST /api/user/login [32m200[0m 26.342 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 17:15:07] [33mhttp[39m: 192.168.5.15 GET /api/user/loginCheck [36m304[0m 4.310 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 17:15:13] [33mhttp[39m: 192.168.5.15 POST /api/user/login [32m200[0m 22.335 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 17:15:32] [33mhttp[39m: 192.168.5.15 POST /api/user/login [32m200[0m 46.627 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 17:16:05] [33mhttp[39m: 192.168.5.15 POST /api/user/login [32m200[0m 58.796 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 17:16:22] [33mhttp[39m: 192.168.5.15 POST /api/user/login [32m200[0m 57.965 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 17:16:44] [33mhttp[39m: 192.168.5.15 POST /api/user/login [32m200[0m 35.364 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 17:17:13] [33mhttp[39m: 192.168.5.15 POST /api/user/login [32m200[0m 53.896 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 17:18:17] [33mhttp[39m: 192.168.5.15 POST /api/user/login [31m500[0m 21.922 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 17:18:59] [33mhttp[39m: 192.168.5.15 POST /api/user/login [0mundefined[0m - ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 17:20:13] [33mhttp[39m: 192.168.5.15 POST /api/user/login [0mundefined[0m - ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 17:20:45] [33mhttp[39m: 192.168.5.15 POST /api/user/login [0mundefined[0m - ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 17:21:24] [33mhttp[39m: 192.168.5.15 POST /api/user/login [0mundefined[0m - ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 17:22:42] [33mhttp[39m: 192.168.5.15 POST /api/user/login [0mundefined[0m - ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 17:23:20] [33mhttp[39m: 192.168.5.15 POST /api/user/login [0mundefined[0m - ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 17:23:44] [33mhttp[39m: 192.168.5.15 POST /api/user/login [0mundefined[0m - ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 17:24:18] [33mhttp[39m: 192.168.5.15 POST /api/user/login [0mundefined[0m - ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 17:37:30] [31merror[39m: db errorER_HOST_NOT_PRIVILEGED: Host '192.168.5.15' is not allowed to connect to this MySQL server
+[2020-06-19 17:38:07] [31merror[39m: db errorER_HOST_NOT_PRIVILEGED: Host '192.168.5.15' is not allowed to connect to this MySQL server
+[2020-06-19 17:39:10] [31merror[39m: db errorER_HOST_NOT_PRIVILEGED: Host '192.168.5.15' is not allowed to connect to this MySQL server
+[2020-06-19 17:39:40] [31merror[39m: db errorER_HOST_NOT_PRIVILEGED: Host '192.168.5.15' is not allowed to connect to this MySQL server
+[2020-06-19 17:40:22] [31merror[39m: db error ER_HOST_NOT_PRIVILEGED: Host '192.168.5.15' is not allowed to connect to this MySQL server
+[2020-06-19 17:41:45] [31merror[39m: db error ER_HOST_NOT_PRIVILEGED: Host '192.168.5.15' is not allowed to connect to this MySQL server
+[2020-06-19 17:49:45] [31merror[39m: db error ER_HOST_NOT_PRIVILEGED: Host '192.168.5.15' is not allowed to connect to this MySQL server
+[2020-06-19 17:57:54] [33mhttp[39m: 192.168.5.15 POST /api/user/login [0mundefined[0m - ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+[2020-06-19 17:58:30] [33mhttp[39m: 192.168.5.15 POST /api/user/login [32m200[0m 30.714 ms Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
