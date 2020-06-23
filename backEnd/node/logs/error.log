@@ -15,3 +15,11 @@
 [2020-06-19 17:40:22] [31merror[39m: db error ER_HOST_NOT_PRIVILEGED: Host '192.168.5.15' is not allowed to connect to this MySQL server
 [2020-06-19 17:41:45] [31merror[39m: db error ER_HOST_NOT_PRIVILEGED: Host '192.168.5.15' is not allowed to connect to this MySQL server
 [2020-06-19 17:49:45] [31merror[39m: db error ER_HOST_NOT_PRIVILEGED: Host '192.168.5.15' is not allowed to connect to this MySQL server
+[2020-06-22 16:20:58] [31merror[39m: ER_BAD_FIELD_ERROR: Unknown column 'link' in 'field list'
+[2020-06-22 16:21:48] [31merror[39m: ER_BAD_FIELD_ERROR: Unknown column 'author_id' in 'field list'
+[2020-06-22 16:22:35] [31merror[39m: ER_NO_DEFAULT_FOR_FIELD: Field 'isShow' doesn't have a default value
+[2020-06-23 09:31:22] [31merror[39m: ER_NO_DEFAULT_FOR_FIELD: Field 'tags' doesn't have a default value
+[2020-06-23 09:33:22] [31merror[39m: ER_NO_DEFAULT_FOR_FIELD: Field 'tags' doesn't have a default value
+[2020-06-23 09:44:41] [31merror[39m: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '测试'')' at line 3
+[2020-06-23 09:45:52] [31merror[39m: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '测试'')' at line 2
+[2020-06-23 09:47:47] [31merror[39m: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '09:47:47, 4, '1',1)' at line 2

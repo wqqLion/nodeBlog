@@ -4,7 +4,7 @@
  * @Author: wqq
  * @Date: 2020-06-18 11:13:40
  * @LastEditors: wqq
- * @LastEditTime: 2020-06-19 17:57:23
+ * @LastEditTime: 2020-06-22 19:19:23
  */
 const mysql = require('mysql');
 const logger = require('../utils/logger')
@@ -14,6 +14,7 @@ const MYSQL_CONF = {
   password: '123456',
   port: '3306',
   database: 'blog',
+  timezone:"SYSTEM"
 };
 
 let con = null;
@@ -46,6 +47,7 @@ function exec(sql) {
   const promise = new Promise((resolve, reject) => {
     con.query(sql, (err, result) => {
       if (err) {
+        logger.error(err.message)
         reject(err);
         return;
       }

@@ -4,7 +4,7 @@
  * @Author: wqq
  * @Date: 2020-06-18 11:10:16
  * @LastEditors: wqq
- * @LastEditTime: 2020-06-19 17:58:43
+ * @LastEditTime: 2020-06-23 11:57:21
  */
 var express = require('express');
 var router = express.Router();
@@ -12,7 +12,8 @@ var router = express.Router();
 const {
   regino,
   login,
-  userInfo
+  userInfo,
+  userCheck
 } = require('../controller/userController');
 
 const {
@@ -39,8 +40,24 @@ router.post('/region', function (req, res, next) {
     res.json('用户名已存在');
     return;
   }
-  const reResult = regino(userName, password);
-  res.json(reResult);
+
+  const checkResult = userCheck(userName);
+  checkResult.then(data => {
+    if (data.length > 0) {
+      res.json({
+        code: 201,
+        message: '用户名已存在'
+      })
+    } else {
+      const reResult = regino(userName, password);
+      reResult.then(data=>{
+        res.json({
+          code:200,
+          message:'注册成功'
+        });
+      })
+    }
+  })
 })
 // 登录
 router.post('/login', function (req, res, next) {
@@ -59,6 +76,7 @@ router.post('/login', function (req, res, next) {
   return result.then(data => {
     if (data.userName) {
       req.session.userName = data.userName;
+      console.log(req.session.userName)
       res.json({
         code: 200,
         id: data.id,
@@ -83,4 +101,7 @@ router.get('/loginCheck', function (req, res, next) {
   res.json(new ErrorModel('未登录'));
 
 })
+
+
+
 module.exports = router;

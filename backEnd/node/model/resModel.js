@@ -4,7 +4,7 @@
  * @Author: wqq
  * @Date: 2020-06-18 14:21:53
  * @LastEditors: wqq
- * @LastEditTime: 2020-06-18 14:37:07
+ * @LastEditTime: 2020-06-22 09:15:41
  */ 
 class BaseModel{
   constructor(data,message){
@@ -25,7 +25,7 @@ class BaseModel{
 class SuccessModel extends BaseModel{
  constructor(data,message){
    super(data,message);
-   this.errno=200;
+   this.code=200;
  } 
 }
 

@@ -4,14 +4,14 @@
  * @Author: wqq
  * @Date: 2020-06-18 15:06:43
  * @LastEditors: wqq
- * @LastEditTime: 2020-06-19 14:58:28
+ * @LastEditTime: 2020-06-23 14:30:05
 --> 
 <template>
   <header class="header bx">
     <el-row>
       <el-col class="blog-loo" :span="4">Blog</el-col>
       <el-col class="header-item" :span="2">关于作者</el-col>
-      <el-col :class="$route.path =='/'?'active':''" class="header-item" :span="2">推荐</el-col>
+      <el-col :class="$route.path =='/recommendList'?'active':''" class="header-item" :span="2">推荐</el-col>
       <el-col class="header-item" :span="2">我的</el-col>
       <el-col class="header-search" :span="5">
         <el-input placeholder="搜索文章或关键字" v-model="searchValue" class="input-with-select">
@@ -24,8 +24,11 @@
         </el-badge>
       </el-col>
       <el-col class="header-btns" :span="6">
-        <el-button @click="loginHandle" type="primary">我要登录</el-button>
-        <el-button @click="regionHandle" type="primary">我要注册</el-button>
+        <el-button v-if="!userName" @click="loginHandle" type="primary">我要登录</el-button>
+        <el-button v-if="!userName" @click="regionHandle" type="primary">我要注册</el-button>
+        <span class="username" v-if="userName">{{userName}}</span>
+        <el-button v-if="userName" @click="writeArticle" type="primary" plain>写文章</el-button>
+        <el-button v-if="userName" @click="logOut" type="warning" plain>退出</el-button>
       </el-col>
     </el-row>
     <Login @hide="hideDialog" :dialogVisible="loginDialog"></Login>
@@ -34,15 +37,15 @@
 </template>
 
 <script type="text/javascript">
-import Login from './login'
-import Region from './region'
+import Login from "./login";
+import Region from "./region";
 export default {
   data() {
     return {
-      userName:sessionStorage.getItem('userName'),
-      searchValue:'',
-      loginDialog:false,
-      regionDialog:false
+      userName: "",
+      searchValue: "",
+      loginDialog: false,
+      regionDialog: false
     };
   },
   components: {
@@ -50,18 +53,46 @@ export default {
     Region
   },
   methods: {
-    hideDialog(key){
+    hideDialog(key, reset) {
       this[key] = false;
+      if (reset) {
+        this.checkLogin();
+      }
     },
-    loginHandle(){
+    loginHandle() {
       this.loginDialog = true;
     },
-    regionHandle(){
+    regionHandle() {
       this.regionDialog = true;
+    },
+    checkLogin() {
+      this.userName = sessionStorage.getItem("userName");
+      console.log(sessionStorage.getItem("userName"))
+    },
+    writeArticle() {
+      this.$router.push("/writeBlog");
+    },
+    logOut() {
+      this.$confirm("确定退出吗?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning"
+      })
+        .then(() => {
+          sessionStorage.removeItem("userName");
+          sessionStorage.removeItem("id");
+          this.userName = '';
+          this.checkLogin();
+          this.$message({
+            type: "success",
+            message: "删除成功!"
+          });
+        })
+        .catch(() => {});
     }
   },
   mounted() {
-    // console.log(this.$route.path)
+    this.checkLogin();
   }
 };
 </script>
@@ -90,7 +121,7 @@ export default {
     line-height: 70px;
     padding-right: 20px;
   }
-  .active{
+  .active {
     color: #009a61;
     font-weight: bold;
   }
@@ -103,6 +134,9 @@ export default {
     .el-badge__content {
       top: 15px !important;
     }
+  }
+  .username {
+    margin-right: 20px;
   }
 }
 </style>

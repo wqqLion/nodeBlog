@@ -4,12 +4,13 @@
  * @Author: wqq
  * @Date: 2020-06-18 15:18:27
  * @LastEditors: wqq
- * @LastEditTime: 2020-06-19 15:11:02
+ * @LastEditTime: 2020-06-23 14:20:34
  */ 
 import axios from "axios";
 import qs from 'qs'
 import {Message} from 'element-ui';
 
+axios.defaults.withCredentials=true;//携带cookie,默认不携带
 // 创建新的axios实例
 const service = axios.create({
   baseURL:'http://192.168.5.15:8006',
@@ -32,17 +33,16 @@ service.interceptors.request.use(config=>{
 
 // 响应拦截器
 service.interceptors.response.use(response=>{
-  return response.data;
+  if(response.data.code == 200){
+    return response.data;
+  }else{
+    return Promise.reject(response.data);
+  }
 },error=>{
-  // if(error&&error.response){
-
-  // }else{
-
-  // }
   Message.error({
     type:'error',
     message:error.Message || '错误'
   });
-  return Promise.resolve(error.response);
+  return Promise.reject(error.response);
 })
 export default service

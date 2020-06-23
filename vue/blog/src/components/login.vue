@@ -4,7 +4,7 @@
  * @Author: wqq
  * @Date: 2020-06-19 11:56:38
  * @LastEditors: wqq
- * @LastEditTime: 2020-06-19 14:57:07
+ * @LastEditTime: 2020-06-23 14:30:44
 --> 
 <template>
   <el-dialog title="登录" :visible.sync="dialogVisible" width="400px" :before-close="handleClose">
@@ -20,7 +20,7 @@
           <el-input placeholder="用户名" v-model="formLabelAlign.name"></el-input>
         </el-form-item>
         <el-form-item label="密码" prop="password">
-          <el-input placeholder="密码" v-model="formLabelAlign.password"></el-input>
+          <el-input type="password" placeholder="密码" v-model="formLabelAlign.password"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="submitForm('loginForm')">立即登录</el-button>
@@ -78,8 +78,10 @@ export default {
                   message: "登录成功"
                 });
                 this.$refs[formName].resetFields();
-                this.$emit("hide", "loginDialog");
                 sessionStorage.setItem('userName',res.userName);
+                sessionStorage.setItem('id',res.id);
+                this.$emit("hide", "loginDialog",'success');
+                
               },
               err => {
                 this.$message({
