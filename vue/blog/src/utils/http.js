@@ -4,7 +4,7 @@
  * @Author: wqq
  * @Date: 2020-06-18 15:25:33
  * @LastEditors: wqq
- * @LastEditTime: 2020-06-19 10:05:55
+ * @LastEditTime: 2020-06-24 14:54:29
  */ 
 import request from './request'
 
@@ -22,12 +22,13 @@ const http ={
         if(params) config.params = params
         return request(config)
     },
-    post(url,params){
+    post(url,params,header){
         const config = {
             method: 'post',
             url:url
         }
-        if(params) config.data = params
+        if(params) config.data = params;
+        config.header = header;
         return request(config)
     },
     put(url,params){
@@ -35,7 +36,7 @@ const http ={
             method: 'put',
             url:url
         }
-        if(params) config.params = params
+        if(params) config.data = params
         return request(config)
     },
     delete(url,params){
@@ -44,6 +45,7 @@ const http ={
             url:url
         }
         if(params) config.params = params
+        console.log(config)
         return request(config)
     }
 }

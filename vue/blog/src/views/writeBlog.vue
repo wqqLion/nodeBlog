@@ -4,12 +4,12 @@
  * @Author: wqq
  * @Date: 2020-06-22 14:55:23
  * @LastEditors: wqq
- * @LastEditTime: 2020-06-23 14:33:17
+ * @LastEditTime: 2020-06-24 16:11:19
 --> 
 <template>
   <div class style="height:100%">
     <header class="header bx">
-      <span @click="goHome"  class="blog-loo" >Blog</span>
+      <span @click="goHome" class="blog-loo">Blog</span>
       <el-button @click="saveMarkdown" type="primary">保存</el-button>
       <el-button type="success">发布</el-button>
     </header>
@@ -39,7 +39,7 @@
             size="small"
             @keyup.enter.native="handleInputConfirm"
             @blur="handleInputConfirm"
-            maxLength="4"
+            maxlength="4"
           ></el-input>
           <el-button
             v-if="!inputVisible && dynamicTags.length<6"
@@ -49,7 +49,7 @@
           >+ New Tag</el-button>
         </div>
         <div class="markdown">
-          <mavon-editor ref="editor" v-model="markdownValue" />
+          <mavon-editor @imgAdd="$imgAdd" ref="editor" v-model="markdownValue" />
         </div>
       </div>
     </div>
@@ -57,6 +57,7 @@
 </template>
 
 <script type="text/javascript">
+import axios from "axios";
 export default {
   data() {
     return {
@@ -66,7 +67,8 @@ export default {
       inputVisible: false,
       inputValue: "",
       markdownValue: "",
-      link: ""
+      link: "",
+      articleId: ""
     };
   },
   components: {},
@@ -92,12 +94,28 @@ export default {
     },
 
     IsURL(url) {
-      var strRegex = /^([hH][tT]{2}[pP]:\/\/|[hH][tT]{2}[pP][sS]:\/\/|www\.)(([A-Za-z0-9-~]+)\.)+([A-Za-z0-9-~\/])+$/;
-      var re = new RegExp(strRegex);
-      if (!re.test(url)) {
-        return false;
+      if (url.length > 8) {
+        let urlHttps = url.slice(0, 5);
+        let urlHttp = url.slice(0, 4);
+        if (urlHttps == "https") {
+          let https = url.slice(0, 8);
+          if (https == "https://") {
+            return true;
+          } else {
+            return false;
+          }
+        } else if (urlHttp == "http") {
+          let http = this.url.slice(0, 7);
+          if (http == "http://") {
+            return true;
+          } else {
+            return false;
+          }
+        } else {
+          return false;
+        }
       } else {
-        return true;
+        return false;
       }
     },
     saveMarkdown() {
@@ -121,36 +139,105 @@ export default {
         return false;
       }
       if (id) {
+        this.$http
+          .put("/api/blog/updateArticle", {
+            title: this.title,
+            content: html,
+            link: this.link,
+            authorId: sessionStorage.getItem("id"),
+            markdown: markdown,
+            type: this.select,
+            tags: this.dynamicTags.join(","),
+            link: this.link,
+            id: id
+          })
+          .then(
+            res => {
+              this.$message({
+                type: "success",
+                message: "保存成功"
+              });
+            },
+            err => {}
+          );
       } else {
         this.$http
           .post("/api/blog/addArticle", {
             title: this.title,
             content: html,
             link: this.link,
-            authorId: sessionStorage.getItem('id'),
+            authorId: sessionStorage.getItem("id"),
             markdown: markdown,
             type: this.select,
             tags: this.dynamicTags.join(","),
             link: this.link
           })
-          .then(
-            res => {
-              console.log(res)
-              this.$message({
-                type: "success",
-                message: "保存成功"
-              });
-            }
-          ).catch(err=>{
-            
-          });
+          .then(res => {
+            console.log(res);
+            this.$message({
+              type: "success",
+              message: "保存成功"
+            });
+          })
+          .catch(err => {});
       }
     },
-    goHome(){
-      this.$router.push('/');
+    goHome() {
+      this.$router.push("/");
+    },
+    $imgAdd(pos, $file) {
+      var formdata = new FormData();
+      formdata.append("file", $file);
+      
+      const service = axios.create({
+        baseURL: "http://192.168.5.15:8007",
+        port: "8007",
+        timeout: 5 * 1000
+      });
+
+      service({ url: "/api/blog/blogImg", 
+      headers: { "Content-Type": "multipart/form-data" },
+      method: "post",data:formdata }).then(res=>{
+         this.$refs.editor.$img2Url(pos, res.data.data.url);
+      },err=>{
+
+      })
+      
+      // axios.create({
+      //   url: "http://192.168.5.15:8006/api/blog/blogImg",
+      //   port: "8006",
+      //   timeout: 5 * 1000,
+      //   headers: { "Content-Type": "multipart/form-data" },
+      //   data: formdata,
+      //   method:post
+      // });
+      // console.log(formdata)
+      // this.$http.post('/api/blog/blogImg',formdata,{ "Content-Type": "multipart/form-data" }).then(res=>{
+
+      // })
     }
   },
-  mounted() {}
+  mounted() {
+    //获取文章详情
+    if (this.$route.query.id) {
+      this.$http
+        .get("/api/blog/articleDetail", { id: this.$route.query.id })
+        .then(
+          res => {
+            let article = res.data;
+            this.title = article.title;
+            this.select = article.type;
+            this.markdownValue = article.markdown;
+            this.articleId = article.articleId;
+            this.dynamicTags =
+              article.tags == "" ? [] : article.tags.split(",");
+            this.link = article.link;
+            console.log(res.data);
+          },
+          err => {}
+        );
+    }
+  }
 };
 </script>
 
@@ -177,13 +264,13 @@ export default {
   height: calc(100% - 160px);
 }
 .blog-loo {
-    font-size: 30px;
-    line-height: 70px;
-    text-align: center;
-    float: left;
-    margin-left: 10%;
-    cursor: pointer;
-  }
+  font-size: 30px;
+  line-height: 70px;
+  text-align: center;
+  float: left;
+  margin-left: 10%;
+  cursor: pointer;
+}
 </style>
 <style lang="less">
 .el-tag + .el-tag {

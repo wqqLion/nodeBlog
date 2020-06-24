@@ -2,10 +2,11 @@
  * @Descripttion: 
  * @version: 
  * @Author: wqq
- * @Date: 2020-06-22 16:42:55
+ * @Date: 2020-06-24 12:19:44
  * @LastEditors: wqq
- * @LastEditTime: 2020-06-24 12:19:29
+ * @LastEditTime: 2020-06-24 12:20:04
 --> 
+ 
 <template>
   <div class="article-div">
     <div class="scrollbar bx">
@@ -71,7 +72,7 @@ export default {
     getList() {
       this.$http
         .get("/api/blog/list", {
-          // userId: sessionStorage.getItem("id")
+          userId: sessionStorage.getItem("id")
         })
         .then(
           res => {

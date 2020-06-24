@@ -4,7 +4,7 @@
  * @Author: wqq
  * @Date: 2020-06-18 11:10:16
  * @LastEditors: wqq
- * @LastEditTime: 2020-06-23 11:57:21
+ * @LastEditTime: 2020-06-23 17:23:42
  */
 var express = require('express');
 var router = express.Router();
@@ -89,6 +89,8 @@ router.post('/login', function (req, res, next) {
 })
 //验证是否登录
 router.get('/loginCheck', function (req, res, next) {
+  console.log('---------------------------------------------------------')
+  console.log(req.session.userName)
   if (req.session.userName) {
     const result = userInfo(req.session.userName);
     return result.then(data => {

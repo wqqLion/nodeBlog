@@ -4,7 +4,7 @@
  * @Author: wqq
  * @Date: 2020-06-22 10:11:26
  * @LastEditors: wqq
- * @LastEditTime: 2020-06-23 09:48:15
+ * @LastEditTime: 2020-06-24 14:09:10
  */
 const {
   exec,
@@ -18,7 +18,7 @@ const {
 
 let blog = class blog {
   // 新增博客
-  addArticle(title, content, link, authorId, markdown, type,tags) {
+  addArticle(title, content, link, authorId, markdown, type, tags) {
     content = escape(content);
     markdown = escape(markdown);
     title = escape(title);
@@ -31,20 +31,51 @@ let blog = class blog {
     values 
     (${title}, ${content}, ${link}, '${createtime}', '${authorId}', ${markdown},'${type}',${tags});
     `;
-    return exec(sql).then(res=>{
+    return exec(sql).then(res => {
       return {
-        id:res.insertId
+        id: res.insertId
       }
     })
 
   }
-  //获取推荐列表
-  getBlogList(author, keyword) {
+  //更新博客
+  updateArticle(options) {
+    let type = escape(options.type),
+      content = escape(options.content),
+      title = escape(options.title),
+      markdown = escape(options.markdown);
+    let link = escape(options.link);
+    
+    let sql = `update tb_blogs set 
+    title = ${title},
+    content = ${content},
+    type=${type},
+    link=${link},
+    markdown = ${markdown} where id = ${options.id} limit 1;
+    `;
+    return exec(sql).then(res => {
+      return res;
+      // if (res.affectedRows > 0) {
+      //   return res;
+      // }
+      // return false
+    })
+
+  }
+  //删除
+  deleteArticle(id){
+    let sql = `delete from tb_blogs where id = ${id} `;
+    return exec(sql).then(res=>{
+      return res;
+    })
+  }
+  //获取列表
+  getBlogList(author, keyword, userId, page) {
     // and
     // tb_blogs.isShow=1
-    let sql = `select *,tb_blogs.id as articleId 
+    let sql = `select SQL_CALC_FOUND_ROWS *,tb_blogs.id as articleId 
     from tb_blogs,tb_users 
-    where tb_blogs.authorId=tb_users.id `;
+    where tb_blogs.authorId=tb_users.id`;
     if (author) {
       author = mysql.escape(author);
       sql += `and author=${author}`;
@@ -53,10 +84,22 @@ let blog = class blog {
       keyword = mysql.escape(keyword);
       sql += `and title linke %${keyword}%`;
     }
-    sql += ` order by tb_blogs.createTime desc;`
-    return exec(sql).then(res=>{
-      return res
+    if(userId){
+      sql += ` and authorId = ${userId} `;
+    }
+    sql += ` order by tb_blogs.createTime desc limit ${page},10;`
+    return exec(sql).then(res => {
+      return exec(`SELECT FOUND_ROWS()`).then(res2 => {
+        res.total = res2[0]['FOUND_ROWS()'];
+        return res;
+      })
     });
+  }
+  readArticle(id) {
+    let sql = `select * ,tb_blogs.id as articleId   from tb_blogs,tb_users  where tb_blogs.authorId=tb_users.id and tb_blogs.id = ${id}`;
+    return exec(sql).then(res => {
+      return res;
+    })
   }
 }
 module.exports = blog

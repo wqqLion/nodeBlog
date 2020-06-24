@@ -4,7 +4,7 @@
  * @Author: wqq
  * @Date: 2020-06-18 10:23:43
  * @LastEditors: wqq
- * @LastEditTime: 2020-06-22 14:29:44
+ * @LastEditTime: 2020-06-24 15:24:06
  */
 var createError = require('http-errors');
 var express = require('express');
@@ -17,6 +17,8 @@ const handleLog = require('./utils/morgan')
 
 var app = express();
 
+
+app.use('/upload',express.static('./upload'))
 app.use(handleLog);
 
 app.all('*', function (req, res, next) {

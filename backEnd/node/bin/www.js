@@ -4,12 +4,12 @@
  * @Author: wqq
  * @Date: 2020-06-18 11:44:18
  * @LastEditors: wqq
- * @LastEditTime: 2020-06-18 16:53:52
+ * @LastEditTime: 2020-06-24 15:59:51
  */
 var app = require('../app');
 var http = require('http');
 var debug = require('debug')('node:server');
-var port = normalizePort(process.env.PORT || '8006');
+var port = normalizePort(process.env.PORT || '8007');
 app.set('port', port);
 var server = http.createServer(app);
 

@@ -4,15 +4,23 @@
  * @Author: wqq
  * @Date: 2020-06-18 15:06:43
  * @LastEditors: wqq
- * @LastEditTime: 2020-06-23 14:30:05
+ * @LastEditTime: 2020-06-24 12:17:22
 --> 
 <template>
   <header class="header bx">
     <el-row>
-      <el-col class="blog-loo" :span="4">Blog</el-col>
-      <el-col class="header-item" :span="2">关于作者</el-col>
-      <el-col :class="$route.path =='/recommendList'?'active':''" class="header-item" :span="2">推荐</el-col>
-      <el-col class="header-item" :span="2">我的</el-col>
+      <el-col class="blog-loo" :span="4">
+        <div @click="routerClick">Blog</div>
+      </el-col>
+      <el-col class="header-item" :span="2">
+        <div @click="routerClick">关于作者</div>
+      </el-col>
+      <el-col :class="$route.path =='/recommendList'?'active':''" class="header-item" :span="2">
+        <div @click="routerClick('/recommendList')">推荐</div>
+      </el-col>
+      <el-col :class="$route.path =='/myList'?'active':''" class="header-item" :span="2">
+        <div @click="routerClick('/myList')">我的</div>
+      </el-col>
       <el-col class="header-search" :span="5">
         <el-input placeholder="搜索文章或关键字" v-model="searchValue" class="input-with-select">
           <el-button slot="append" icon="el-icon-search"></el-button>
@@ -53,6 +61,11 @@ export default {
     Region
   },
   methods: {
+    routerClick(p) {
+      this.$router.push({
+        path: p
+      });
+    },
     hideDialog(key, reset) {
       this[key] = false;
       if (reset) {
@@ -67,7 +80,7 @@ export default {
     },
     checkLogin() {
       this.userName = sessionStorage.getItem("userName");
-      console.log(sessionStorage.getItem("userName"))
+      console.log(sessionStorage.getItem("userName"));
     },
     writeArticle() {
       this.$router.push("/writeBlog");
@@ -81,7 +94,7 @@ export default {
         .then(() => {
           sessionStorage.removeItem("userName");
           sessionStorage.removeItem("id");
-          this.userName = '';
+          this.userName = "";
           this.checkLogin();
           this.$message({
             type: "success",
@@ -106,6 +119,7 @@ export default {
     font-size: 30px;
     line-height: 70px;
     text-align: center;
+    cursor: pointer;
   }
   .header-item {
     font-size: 20px;

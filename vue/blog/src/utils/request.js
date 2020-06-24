@@ -4,7 +4,7 @@
  * @Author: wqq
  * @Date: 2020-06-18 15:18:27
  * @LastEditors: wqq
- * @LastEditTime: 2020-06-23 14:20:34
+ * @LastEditTime: 2020-06-24 15:48:32
  */ 
 import axios from "axios";
 import qs from 'qs'
@@ -13,19 +13,26 @@ import {Message} from 'element-ui';
 axios.defaults.withCredentials=true;//携带cookie,默认不携带
 // 创建新的axios实例
 const service = axios.create({
-  baseURL:'http://192.168.5.15:8006',
-  port:'8006',
+  baseURL:'http://192.168.5.15:8007',
+  port:'8007',
   timeout:5*1000
 })
+
 
 // 请求拦截器
 
 service.interceptors.request.use(config=>{
   // config.data = JSON.stringify(config.data);
+  console.log(config)
   config.data = qs.stringify(config.data);
-  config.headers = {
-    'Content-Type':'application/x-www-form-urlencoded'
+  if(config.header){
+    config.headers = config.header;
+  }else{
+    config.headers = {
+      'Content-Type':'application/x-www-form-urlencoded'
+    }
   }
+  
   return config
 },error=>{
   Promise.reject(error);
