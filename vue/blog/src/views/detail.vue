@@ -4,10 +4,10 @@
  * @Author: wqq
  * @Date: 2020-06-23 14:52:24
  * @LastEditors: wqq
- * @LastEditTime: 2020-06-24 16:19:15
+ * @LastEditTime: 2020-06-24 17:08:48
 --> 
 <template>
-  <div class style="height:100%">
+  <div class style="height:100%;">
     <div class="acricle-detail scrollbar">
       <el-scrollbar style="height:100%;width:100%">
         <div class="article-title">{{article.title}}</div>
@@ -96,7 +96,7 @@ export default {
 
 <style lang="less" scoped>
 .acricle-detail {
-  height: 100%;
+  height: 90%;
   width: 50%;
   margin: 0 auto;
 }

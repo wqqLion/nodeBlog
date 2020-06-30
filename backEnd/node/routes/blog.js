@@ -4,24 +4,29 @@
  * @Author: wqq
  * @Date: 2020-06-18 11:10:22
  * @LastEditors: wqq
- * @LastEditTime: 2020-06-24 16:08:35
+ * @LastEditTime: 2020-06-30 14:21:34
  */
 var express = require('express');
 var router = express.Router();
 
-
 const loginCheck = require('../model/loginCheck')
 
 const Blog = require('../controller/blogControler')
+
 
 const {
   SuccessModel,
   ErrorModel
 } = require('../model/resModel');
 
+const handleFiles = require('../utils/download')
+
 const multer = require('multer')
 const fs = require('fs')
-const path = require('path')
+const path = require('path');
+const {
+  http
+} = require('../utils/logger');
 
 const blog = new Blog();
 //博客带图片是图片上传
@@ -39,12 +44,12 @@ router.post('/blogImg', multer({
     let file = req.file;
     let fileInfo = {};
     let fileList = file.originalname.split('.');
-    let ext = fileList[fileList.length-1];
+    let ext = fileList[fileList.length - 1];
     let times = new Date();
     times = times.getTime();
     let newName = `${times}.${ext}`;
     fileList.pop();
-    newName = fileList.join('.')+newName; 
+    newName = fileList.join('.') + newName;
     fs.renameSync('./upload/' + file.filename, './upload/' + newName); //这里修改文件名字，比较随意。
     // 获取文件信息
     fileInfo.mimetype = file.mimetype;
@@ -57,9 +62,9 @@ router.post('/blogImg', multer({
       'content-type': 'application/json; charset=utf-8'
     });
     res.json({
-      code:200,
-      data:{
-        url:'http://'+req.headers.host+'/upload/'+newName
+      code: 200,
+      data: {
+        url: 'http://' + req.headers.host + '/upload/' + newName
       }
     })
   }
@@ -177,5 +182,101 @@ router.delete('/deleteArticle', loginCheck, (req, res, next) => {
       message: data.message
     })
   })
+})
+
+router.put('/addView', (req, res, next) => {
+  const result = blog.addView(req.body.id);
+  result.then(data => {
+    if (data.affectedRows == 1) {
+      res.json({
+        code: 200,
+        message: '成功',
+      })
+    } else {
+      res.json({
+        code: 203,
+        message: '失败'
+      })
+    }
+  })
+})
+// 下载测试
+router.get('/download', (req, res, next) => {
+
+  let fileName = 'text.txt';
+  let filePath = path.join('./download/', fileName);
+  let stats = fs.statSync(filePath);
+  if (stats.isFile()) {
+    res.set({
+      'Content-Type': 'application/octet-stream',
+      'Content-Disposition': 'attachment; filename=' + fileName,
+      'Content-Length': stats.size
+    })
+    fs.createReadStream(filePath).pipe(res);
+  }else{
+    res.end(404)
+  }
+  // let fileName = req.query.name || 'text';
+  // let currFile = 'http://192.168.5.15:8007/download/text.txt';
+  // let result = handleFiles(currFile);
+  // let binaryFiles = result.then(data=>{
+  //   res.json({
+  //     data:data,
+  //     code:200
+  //   })
+  //   console.log(data)
+  //   return data;
+  // })
+  // console.log(binaryFiles)
+  // res.json({})
+  return
+  httpf.get(currFile, res => {
+    res.setEncoding('binary') // 二进制
+    let files = ''
+    res.on('data', chunk => { // 加载到内存
+      files += chunk
+    }).on('end', () => { // 加载完
+      // console.log(files)
+      // res.json({
+      //   data: files
+      // })
+    }).on('error', (err) => {
+      console.log('error-------------------------')
+      console.log(err)
+    })
+  })
+  return false;
+  fs.exists(currFile, exist => {
+    if (exist) {
+      // res.set({
+      //   "Content-type": "application/octet-stream",
+      //   "Content-Disposition": "attachment;filename=" + encodeURI(fileName)
+      // })
+      let files = ''
+      fReadStream = fs.createReadStream(currFile);
+      fReadStream.setEncoding('binary');
+      fReadStream.on("data", (chunk) => {
+        files += chunk;
+        // res.write(chunk, "binary")
+      });
+      fReadStream.on('error', () => {})
+      fReadStream.on('end', () => {
+        res.json({
+          code: 200,
+          file: files
+        })
+        // res.json({
+        //   test:files
+        // })
+        // res.end();
+      })
+    } else {
+      res.json({
+        code: 203,
+        message: '文件不存在'
+      })
+    }
+  })
+
 })
 module.exports = router;

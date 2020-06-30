@@ -4,7 +4,7 @@
  * @Author: wqq
  * @Date: 2020-06-18 10:23:43
  * @LastEditors: wqq
- * @LastEditTime: 2020-06-24 15:24:06
+ * @LastEditTime: 2020-06-30 11:37:39
  */
 var createError = require('http-errors');
 var express = require('express');
@@ -25,7 +25,7 @@ app.all('*', function (req, res, next) {
   //设置允许跨域的域名，*代表允许任意域名跨域
   res.header("Access-Control-Allow-Origin", "http://192.168.5.15:8080");
   //允许的header类型
-  res.header('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild');
   //跨域允许的请求方式 
   res.header("Access-Control-Allow-Methods", "DELETE,PUT,POST,GET,OPTIONS");
   //允许携带cookie

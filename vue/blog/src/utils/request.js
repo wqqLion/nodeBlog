@@ -4,7 +4,7 @@
  * @Author: wqq
  * @Date: 2020-06-18 15:18:27
  * @LastEditors: wqq
- * @LastEditTime: 2020-06-24 15:48:32
+ * @LastEditTime: 2020-06-24 16:27:19
  */ 
 import axios from "axios";
 import qs from 'qs'
@@ -22,8 +22,6 @@ const service = axios.create({
 // 请求拦截器
 
 service.interceptors.request.use(config=>{
-  // config.data = JSON.stringify(config.data);
-  console.log(config)
   config.data = qs.stringify(config.data);
   if(config.header){
     config.headers = config.header;

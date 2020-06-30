@@ -4,7 +4,7 @@
  * @Author: wqq
  * @Date: 2020-06-22 16:42:55
  * @LastEditors: wqq
- * @LastEditTime: 2020-06-24 12:19:29
+ * @LastEditTime: 2020-06-24 17:06:52
 --> 
 <template>
   <div class="article-div">
@@ -18,7 +18,7 @@
         >
           <div class="card-left">
             <div style="height:calc(100% - 60px)">
-              <el-image fit="fill" :src="src"></el-image>
+              <el-image fit="fill" :src="getImg(item.content)"></el-image>
             </div>
             <div style="margin-top:10px">
               <div class="left-item">创建时间：{{item.createTime}}</div>
@@ -62,11 +62,25 @@ export default {
   },
   components: {},
   methods: {
+    getImg(str) {
+      var reg = /<img\b.*?(?:\>|\/>)/gi;
+      var imgstr = str.match(reg);
+      if (imgstr == null) {
+        return require("../static/images/4d3ea53c084bad6931a56d5158a48jpeg.jpeg");
+      }
+      imgstr = imgstr[0];
+      return imgstr.match(/\bsrc\b\s*=\s*[\'\"]?([^\'\"]*)[\'\"]?/i)[1];
+    },
     goDetail(id) {
-      this.$router.push({
-        path: "/detail",
-        query: { id: id }
-      });
+      this.$http.put("/api/blog/addView", { id: id }).then(
+        res => {
+          this.$router.push({
+            name: "detail",
+            query: { id: id }
+          });
+        },
+        err => {}
+      );
     },
     getList() {
       this.$http
@@ -75,6 +89,8 @@ export default {
         })
         .then(
           res => {
+            // console.log(res.data[0].content)
+            // console.log(res.data[0].markdown)
             this.blogs = res.data;
             this.total = res.total;
           },
@@ -121,6 +137,7 @@ export default {
     height: 100%;
     float: left;
     .left-item {
+      white-space: nowrap;
       height: 30px;
       line-height: 30px;
       color: #626262;

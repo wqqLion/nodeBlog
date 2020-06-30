@@ -49,3 +49,7 @@
 [2020-06-24 12:14:43] [31merror[39m: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'authorId = 1 order by tb_blogs.createTime desc limit 0,10' at line 1
 [2020-06-24 12:15:12] [31merror[39m: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'authorId = 1 order by tb_blogs.createTime desc limit 0,10' at line 1
 [2020-06-24 12:15:31] [31merror[39m: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'authorId = 1 order by tb_blogs.createTime desc limit 0,10' at line 1
+[2020-06-24 16:52:46] [31merror[39m: ER_BAD_FIELD_ERROR: Unknown column 'undefined' in 'where clause'
+[2020-06-24 16:53:13] [31merror[39m: ER_BAD_FIELD_ERROR: Unknown column 'undefined' in 'where clause'
+[2020-06-29 15:34:17] [31merror[39m: db errorread ECONNRESET
+[2020-06-30 09:21:31] [31merror[39m: Cannot enqueue Query after fatal error.

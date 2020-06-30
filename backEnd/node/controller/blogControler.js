@@ -4,7 +4,7 @@
  * @Author: wqq
  * @Date: 2020-06-22 10:11:26
  * @LastEditors: wqq
- * @LastEditTime: 2020-06-24 14:09:10
+ * @LastEditTime: 2020-06-24 17:03:46
  */
 const {
   exec,
@@ -17,6 +17,13 @@ const {
 } = require('../utils/data')
 
 let blog = class blog {
+  //增加阅读量
+  addView(id){
+    let sql = `update tb_blogs set tb_blogs.readVolume = tb_blogs.readVolume + 1  where id = ${id}`;
+    return exec(sql).then(data=>{
+      return data;
+    })
+  }
   // 新增博客
   addArticle(title, content, link, authorId, markdown, type, tags) {
     content = escape(content);
